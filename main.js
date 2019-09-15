@@ -21,4 +21,5 @@ app.use(require('./controllers/authorController'));
 
 app.listen(3000);
 module.exports = app;
+console.log(process.env);
 console.log('Server running in port: 3000 ...')
