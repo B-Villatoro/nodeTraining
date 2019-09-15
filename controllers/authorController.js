@@ -2,6 +2,10 @@ var routes = require('express').Router();
 var db = require('../dao/db');
 var authorDao = require('../dao/authorDao');
 
+routes.get('/',function(req,res){
+  res.send("hello");
+});
+
 routes.get('/author',function(req,res){
     authorDao.getAllAuthors(function(error, result){
       if(error) throw error;
