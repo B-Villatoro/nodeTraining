@@ -14,6 +14,19 @@ routes.get('/author',function(req,res){
     });
 });
 
+routes.get('/author/:authorName', function(req,res){
+  authorDao.getAuthorId(req.params.authorName, function(err, result){
+    if(err){
+      res.status(400);
+      res.send('Bad Parameter');
+    }
+    else{
+    res.status(201);
+    res.json(result);
+    }
+  });
+});
+
 routes.post('/author', function(req,res){
   var author = req.body;
   authorDao.addAuthor(author, function(err, result){

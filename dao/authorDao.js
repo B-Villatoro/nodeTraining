@@ -6,6 +6,12 @@ exports.getAllAuthors = function(cb){
       });
 };
 
+exports.getAuthorId = function(authorName,cb){
+  db.query('select authorId from library.tbl_author where authorName = (?)',[authorName], function(err, result) {
+      cb(err, result);
+    });
+};
+
 exports.addAuthor = function(author, cb){
   db.beginTransaction(function(err){
     if(err) cb(err,null)

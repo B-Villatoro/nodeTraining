@@ -9,6 +9,19 @@ routes.get('/book',function(req,res){
     });
 });
 
+routes.get('/book/:title', function(req,res){
+  bookDao.getBookId(req.params.title, function(err, result){
+    if(err){
+      res.status(400);
+      res.send('Bad Parameter');
+    }
+    else{
+    res.status(201);
+    res.json(result);
+    }
+  });
+});
+
 routes.post('/book', function(req, res){
   var book = req.body;
   bookDao.addBook(book, function(err, result){

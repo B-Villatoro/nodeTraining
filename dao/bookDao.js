@@ -6,6 +6,12 @@ exports.getAllBooks = function (cb) {
   });
 };
 
+exports.getBookId = function (title,cb) {
+  db.query('select bookId from library.tbl_book where title = ?',[title], function (err, result) {
+    cb(err, result);
+  });
+};
+
 exports.addBook = function (book, cb) {
   db.beginTransaction(function (err) {
     if (err) cb(err, null);
